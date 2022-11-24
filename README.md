@@ -3,6 +3,6 @@ blog which allows you to create accounts search post delete post edit and commen
 
 Blog python/django
 
-[![Captura-de-pantalla-214.png](https://i.postimg.cc/MX2tQf5f/Captura-de-pantalla-214.png)](https://postimg.cc/hQs9FjHK)
+<img src="blog-python-Django/../gif.gif">
 
 
