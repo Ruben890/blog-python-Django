@@ -1,0 +1,323 @@
+{% load static %}
+{% load  humanize %}<!-- con esta importacion puedo ver la hora de publicasion en otro formato-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+    <!-- link de Fontawesome -->
+    <script src="https://kit.fontawesome.com/80afc1ebb2.js"crossorigin="anonymous"></script>
+    <script defer src="{% static 'JS/navbar.js'%}"></script>
+    <script defer src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'CSS/navbar.css' %}" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <!--style="background-color: #F7F9F9"-->
+   
+
+
+<!--menu pricipal-->
+<header>
+  <nav>
+    <!--menu de 900-1300px  desktop-->
+    <ul class="menu1">
+      <li><a href="/" style="
+        text-decoration: none; color: #fff; font-size: 22px;
+        font-family: "Montserrat", sans-serif;
+        "><img src="#" alt="Logo"></a>
+      </li>
+      <li>
+        <a href="Juegos" class="opc1">Juegos</a>
+      </li>
+  
+      <li>
+        <a href="Noticias" class="opc1">Noticias</a>
+      </li>
+  
+      <li>
+        <a href="Tegnologia" class="opc1">Tecnología</a>
+      </li>
+  
+      <div style="display: flex" class="buscar">
+        <!-- verificar si el usuario esta logeado y presentale la vista corespondiente-->
+        {% if request.user.is_authenticated %}
+  
+        <div class="User">
+          <!-- verificar quien es el usuraio y poner los datos corespondientes-->
+          {% for k in user %}
+          {% if request.user == k.user %}
+            <a href="{% url 'Editar_perfil' k.id %}" title="Cambiar Imagen">
+            <img src="{{k.image.url}}" alt="User" id="imagen_perfil">
+            <p>{{k.user}}</p>
+            </a>
+          {% endif %}
+          {% endfor %}
+          <div class="UserSubmenu">
+            <a href="AgregarPost" >Crear Post</a>
+            <a href="verPost">Ver mis post</a>
+            <a href="logaud">Cerra seccion</a>
+          </div>
+        </div>
+        
+      
+        {% else %}
+        <li style="cursor:pointer ">
+          <img src="{% static 'img/user.png' %}" alt="Login" class="login" style="width: 3rem; position: relative; bottom: 0.8rem; border-radius: 100%;" title="Iniciar sección" >
+        </li>
+        {% endif %}
+  
+        <!-- search button -->
+        <li>
+          <form action="" method="get">
+            <input type="search" placeholder="Search" name="search"  value="{{request.GET.search}}"/>
+            <button type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </li>
+      </div>
+    </ul>
+  
+    <!-- menu 900px-->
+    <ul class="menu2">
+      <li>
+        <button type="button" id="btn"><i class="fa-solid fa-bars" ></i></button>
+  
+        <li style="position:relative ; top: 2rem;" class="login">
+          <img src="" alt="Logo"/>
+        </li>
+        {% if request.user.is_authenticated %}
+  
+          <li style="position: relative; 0.5rem margin-left: 1rem; display: flex;" class="User">
+            {% for k in user %}
+            {% if request.user == k.user %}
+              <a href="{% url 'Editar_perfil' k.id %}">
+              <img src="{{k.image.url}}" alt="User" id="imagen_perfil"/>
+              <p>{{k.user}}</p>
+            </a>
+            {% endif %}
+            {% endfor %}
+           </li> 
+           {% else %} 
+           <li style="cursor: pointer; position:relative ; top: 1rem; margin-left: 5rem;">
+            <a href="login"><img src="{% static 'img/user.png' %}" alt="Login" class="login" style="width: 2.8rem; border-radius: 100%;" title="Iniciar sección"></a>
+         </li> 
+      
+        {% endif %}
+      </li>
+     
+  
+  
+      <ul class="submenu active" id="submenu">
+  
+  
+          <!-- search button -->
+          <li>
+            <form action="">
+              <input type="search" placeholder="Search" name="search" />
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+          </li>
+        <li class="opc">
+          <a href="juegos">Juegos</a>
+        </li>
+  
+        <li class="opc">
+          <a href="Noticias">Noticias</a>
+        </li>
+        <li class="opc">
+          <a href="Tegnologia">Tecnología</a>
+        </li>   
+        
+  
+        {% if request.user.is_authenticated %}
+        <li class="opc">
+          <a href="AgregarPost">Crear Post</a> 
+        </li>
+  
+        <li class="opc">
+          <a href="verPost">Ver mis post</a>
+        </li>
+  
+        <li class="opc">
+          <a href="logaud">Cerra seccion</a>
+        </li> 
+        {% endif %}
+      </ul>
+    </ul>
+  </nav>
+  </header>
+<nav class="perfiles_mov">
+  <h2>Usuarios</h2>
+  <hr>
+  <div class="profiles">
+    {% for i in user %}
+    <div>
+      <a href=" {% url 'Perfil' i.user.username %}">
+      <img src="{{i.image.url}}" alt="Imagen de perfil" title="imagen de perfil">
+      <h3>{{i.user}}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</nav>
+
+  
+  <!--contenido del blog-->
+    <main class="container">
+      <section>
+        {% if post %}
+          {% for i in post %}
+          <div class="Blogpost">
+            <!-- visualizar usuarios-->
+            {% for j in user %}
+              {% if i.user == j.user %}
+                <div class="perfil" style="display:flex ;">
+                  <img src="{{j.image.url}}" alt="">
+                  <div class="datos">
+                    <h1>{{ j.user }}</h1>
+                    <p>{{ i.tipo }}</p>
+                    <p>{{ i.data |naturaltime }}</p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <h3>{{ i.title }}</h3>
+            <hr>
+
+            <!-- segun el tamaño de texto se muestra el boton ver mas -->
+              {% if i.descriction|length > 150 %}
+                <p class="vista1">{{ i.descriction | truncatechars:150 }}
+
+                  <a href="#" style="color:#f73859;" class="ver_mas">Ver Mas</a>
+
+                </p>
+                <p class="vista_compl" style="display: none;">{{i.descriction}}<a href="#" style="color:#f73859;" class="ver_menos">Ocultar texto</a></p>
+              {% else %}
+              <p class="vista2">{{ i.descriction}}</p>
+              {% endif %}
+
+              {% if i.img %}
+                <img src="{{ i.img.url }}" alt="imagen" class="imagen" />
+              {% else %}
+                <img src="#" alt="" style="display:none" />
+              {% endif %}
+
+
+
+
+              <!--comentarios del la publicasion-->
+              <div class="Comentairos active" id="{{i.id}}">
+
+                {% for comments in coment %}
+                  {% if i  == comments.post%}
+                  <div class="comment">
+
+                    {%for use in user %}
+                     <!-- Persona que an echo el comentario -->
+                    {%if comments.author == use.user %}
+                      <div class="user_comment">
+                        <img src ="{{use.image.url}}" alt="imagen de perfil"  title="imagen de perfil" />
+                        <div>
+                          <p>{{ use.user }}</p>
+                          <p>{{comments.data |naturaltime}}</p>
+                          <!--verificar si el usuario logiado esta autorisado para eliminar los comentarios-->
+                          {% if request.user == comments.author %}
+                          <li style="display:flex;">
+                            <a href="{% url 'EliminarComentarios' comments.id %}">Eliminar</a>
+                            <a href="#">editar</a>
+                          </li>
+                          {% endif %}
+                        </div>
+                      </div>
+                    <hr/>
+                    {%endif%}
+                   {%endfor%}
+
+                    <div class="text_comment">
+                        <p>{{comments.comentario}} 
+                    </div>
+                    
+                  </div>
+                <!-- Si la publicasion no tiene ningun comentarios -->
+                {%else%}
+                  <p style=' font-size: 15px;
+                  font-family: "Montserrat", sans-serif;'>
+                    Esta publicasión no tiene Comentarios
+                  </p>
+                  {% endif %}
+                <!-- Si no se ha echo ningun comentario en el blog-->
+                {% empty%}
+                  <p style=' font-size: 15px;
+                  font-family: "Montserrat", sans-serif;'>
+                    Esta publicasión no tiene Comentarios
+                  </p>
+                {% endfor %}
+
+              </div>
+
+
+              <form action="{% url 'Comentarios' i.id   %}" method="post"  class="btn_comentarios">
+                {% csrf_token %}
+                <div style="padding: 5px;"  onclick="VerComentarios({{i.id}})">
+                  <img src="{% static 'img/blog.png' %}"  style="cursor: pointer;" alt="Ver Comentarios" title="Ver Comentarios" >
+                </div>
+                {{form.comentario}}
+                <button type="submit"><img src="{% static 'img/enviar-mensaje.png' %}" alt="" title="Comentar"></button>
+              </form>
+
+            </div>
+            
+
+          {% endfor %}
+        {% else %}
+        <div class="error">
+          <div>
+            <a href="/" title="Volve Al menu Principal"><img src="{% static 'img/atras.png' %}" alt="atras"></a>
+          </div>
+          <h1>No se ha encontrado ninguna publicación</h1>
+          <hr>
+          <img src="{% static 'img/error-404.png' %}" alt="error 404" class="img_errror">
+        </div>
+        {% endif %}
+      </section>
+
+      <section>
+        <div class="perfiles">
+          <h2>Usuarios</h2>
+          <hr>
+          {% for i in user %}
+          <div>
+            <a href=" {% url 'Perfil' i.user.username %}">
+            <img src="{{i.image.url}}" alt="Imagen de perfil" title="imagen de perfil">
+            <h3>{{i.user}}</h3>
+            </a>
+        </div>
+          {% endfor %}
+        </div>
+      </section>
+    </main>
+
+    <!--pie de pagina-->
+    <footer>
+      <nav>
+        <!--paginación-->
+       <div class="paginatior">
+        {% if post.has_previous%}
+          <a href="?page={{post.previous_page_number}}"><img src="{% static 'img/back.png' %}" alt="Anterior" title="Anterior"></a>
+        {% endif %}
+
+        {% if post.has_next %}
+          <a href="?page={{post.next_page_number}}"><img src="{% static 'img/next.png' %}" alt="Sigiente" title="Sigiente"></a>
+        {% endif %}
+       </div>
+      </nav>
+    </footer>
+  </body>
+</html>

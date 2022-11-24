@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="container">
+      <section>
+        <form method="post">
+          {% csrf_token %}
+            <h2>Login</h2>
+            <div>
+              {{ form.as_p }}
+              <label> Mostrar contraseña</label>
+              <input type="checkbox" class="passowrd" onclick="Ver()" />
+            </div>
+            <a href="{% url 'register' %}">I do not have an account</a>
+            <div class="btn">
+              <button type="submit">Login</button>
+            </div>
+        </form>
+      </section>
+    </main>
+  </body>
+
+  <script>
+    const passowrd = document.getElementById("id_password");
+
+    const Ver = () => {
+      if (passowrd.type == "password") {
+        passowrd.type = "text";
+      } else {
+        passowrd.type = "passowrd";
+      }
+    };
+  </script>
+</html>

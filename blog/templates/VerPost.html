@@ -1,0 +1,126 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/VerPost.css' %}" />
+    <script defer src="{% static 'js/verPost.js' %}"></script>
+    <script defer src="{% static 'js/index.js' %}"></script>
+    <title>Mis Post</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          {% for i in user %} {% if request.user == i.user %}
+          <div class="User">
+            <a href="/" style="text-decoration: none" title="Volver al Inicio">
+              <img src="{{ i.image.url }}" alt="imagen de perfil" />
+              <p>{{ i.user }}</p>
+            </a>
+          </div>    
+          {% endif %} {% endfor %}
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        {% for i in post %}
+        <!-- verificar si el usuario si es el mismo usuario -->
+        {% if request.user == i.user %}
+        <div class="Blogpost">
+          {% if i.complete %}
+          <div
+            class="veficar"
+            style="display: block; background-color: #58d68d ;"
+          >
+            <h3 style="color: #fbfcfc">{{ i.title }}</h3>
+            <p style="color: #333">Completo</p>
+            <p>{{ i.tipo }}</p>
+            <p>{{ i.data|naturaltime }}</p>
+          </div>
+          {% else %}
+          <div
+            class="veficar"
+            style="display: block; background-color: #e74c3c"
+          >
+            <h3 style="color: #fbfcfc">{{ i.title }}</h3>
+            <p style="color: #fbfcfc">Imcompleto</p>
+            <p>{{ i.tipo }}</p>
+            <p>{{ i.data|naturaltime }}</p>
+          </div>
+          {% endif %}
+          <!-- imprimir los valores de ese usuario -->
+
+           <!-- segun el tamaño de texto se muestra el boton ver mas -->
+           {% if i.descriction|length > 150 %}
+           <p class="vista1">{{ i.descriction | truncatechars:150 }} 
+
+             <a href="#" style="color:#f73859;" class="ver_mas">Ver Mas</a>
+
+           </p>
+           <p class="vista_compl" style="display: none;">{{i.descriction}}<a href="#" style="color:#f73859;" class="ver_menos">Ocultar texto</a></p>
+         {% else %}
+         <p class="vista2">{{ i.descriction}}</p>
+         {% endif %}
+
+          {% if i.img %}
+          <img src="{{ i.img.url }}" alt="imagen" class="imagen" />
+          {% else %}
+          <img src="#" alt="" style="display: none" />
+          {% endif %}
+          <!-- botones de eliminar y editar post del mismo ususuario -->
+          <div class="edit" style="display: flex">
+            <!-- botones para eliminar usuarios-->
+            <button class="btn_eliminar">Eliminar</button>
+            <a
+              href="{% url 'Eliminar' i.id %}"
+              style="display: none"
+              class="eliminar"
+              >Eliminar</a
+            >
+            <a href="{% url 'Editar' i.id%}">Editar Post</a>
+          </div>
+        </div>
+        {% endif %} 
+        {%empty%}
+        <div class="error">
+          <h1>No se ha encontrado ninguna publicación</h1>
+          <hr>
+          <img src="{% static 'img/no-profile.png' %}" alt="error 404" class="img_errror">
+        </div>
+        {% endfor %}
+      </section>
+
+      <!--alerta de para confirmar la eliminación del post-->
+      <div class="alert activate" id="alert">
+        <p>Está Seguro de querer eliminar este post</p>
+        <div class="btn">
+          <button type="button" class="Si">Si</button>
+          <button type="button" class="No">No</button>
+        </div>
+      </div>
+    </main>
+
+
+    <!--pie de pagina-->
+    <footer>
+      <nav>
+        <!--paginación-->
+       <div class="paginatior">
+        {% if post.has_previous%}
+          <a href="?page={{post.previous_page_number}}"><img src="{% static 'img/back.png' %}" alt="Anterior" title="Anterior"></a>
+        {% endif %}
+
+        {% if post.has_next %}
+        <a href="?page={{post.next_page_number}}"><img src="{% static 'img/next.png' %}" alt="Sigiente" title="Sigiente"></a>
+        {% endif %}
+       </div>
+      </nav>
+    </footer>
+  </body>
+</html>

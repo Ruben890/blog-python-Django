@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/login.css' %}">
+    <title>Register Blog</title>
+  </head>
+  <body>
+    <main class="container">
+      <section>
+        <form method="post" class="form-group" style="height: 35rem; width: 25rem;">
+          {% csrf_token %}
+          <h2>Register</h2>
+          <div>
+            {{ form.as_p }}
+              <label> Mostrar contraseña</label>
+              <input type="checkbox" onclick="showPassword(), showPassword2() " />
+            
+            <button type="submit" style="cursor:pointer; margin-left: 7rem;">Register</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+
+  <script>
+    const input = document.getElementById('id_password1')
+    const showPassword = () => {
+      if (input.type == 'password') {
+        input.type = 'text'
+      } else {
+        input.type = 'password'
+      }
+    }
+    const input2 = document.getElementById('id_password2')
+    const showPassword2 = () => {
+      if (input2.type == 'password') {
+        input2.type = 'text'
+      } else {
+        input2.type = 'password'
+      }
+    }
+  </script>
+</html>

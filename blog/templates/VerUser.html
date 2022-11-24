@@ -1,0 +1,48 @@
+{% load static %} {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/verUser.css' %}" />
+    <title>{{ user.username }}</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" title="Volve Al menu Principal"><img src="{% static 'img/atras.png' %}" alt="atras"></a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <div class="card_user"> 
+          <!-- imprimir los valores de ese usuario -->
+          <div class="profile">
+            {% for i in perfil %}
+              {% if user.username == i.user.username %}
+                <img src="{{ i.image.url }}" alt="imagen" />
+              {% endif %}
+            {% endfor %}
+            <h1>@{{ user.username }}</h1>
+            <p> Post: {{ user.Posts.count }}</p>
+          </div>
+
+          <div class="BlogPost">
+            {% for i in post %}
+              <div>
+                <h2>{{ i.title }}</h2>
+                <p style="color: #384259 ; font-weight: 900;">{{ i.data|naturaltime }}</p>
+                <p style="margin-top:1.5rem; text-align: justify;">{{ i.descriction|truncatechars:250 }}</p>
+              </div>
+              <hr>
+              {%empty%}
+              <p>NO hay nuevas publicasiones</p>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

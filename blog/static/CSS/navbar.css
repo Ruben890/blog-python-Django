@@ -1,0 +1,267 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(252, 252, 252);
+}
+
+header > nav {
+  z-index: 5;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: #384259;
+  height: 5rem;
+  box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.288);
+}
+
+header,
+nav > .menu1 {
+  justify-content: space-between;
+  display: flex;
+  list-style: none;
+}
+
+header nav > .menu1 li {
+  margin: 1rem;
+  padding: 12px;
+}
+
+header nav > .menu1 .opc1 {
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 12px;
+  border-radius: 5%;
+}
+header nav > .menu1 .opc1:hover {
+  color: #f73859;
+}
+
+header nav > .menu1 form {
+  position: relative;
+  bottom: 0.5rem;
+  background-color: #fff;
+}
+
+header nav > .menu1 form button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+header nav > .menu1 form i {
+  color: #333;
+  padding: 13px;
+  font-size: 1rem;
+}
+
+.menu1 form i:hover {
+  color: #fff;
+  background-color: #f73859;
+}
+
+header nav > .menu1 form input {
+  padding: 12px;
+  border: none;
+  outline: none;
+}
+
+.UserSubmenu {
+  display: none;
+  background-color: #384259;
+}
+.UserSubmenu > a {
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 12px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: block;
+  color: #fff;
+}
+
+.UserSubmenu > a:hover {
+  background-color: #f73859;
+}
+
+.User:hover .UserSubmenu {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  top: 90%;
+}
+
+.User {
+  margin: 1rem;
+  padding: 12px;
+}
+
+.User > a {
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+  display: flex;
+}
+.User > a img {
+  cursor: pointer;
+  width: 4rem;
+  border: none;
+  border-radius: 100%;
+  height: 4rem;
+  position: relative;
+  bottom: 1.5rem;
+
+}
+
+.User > a p {
+  font-size: 22px;
+  color: #fff;
+  margin-left: 1rem;
+}
+
+nav > .menu2 {
+  display: none;
+}
+
+.submenu {
+  display: none \;;
+}
+
+/* @media screen and (max-width: 1500px) {
+  nav > .menu2 {
+    display: none;
+  }
+  .submenu {
+    display: none \;;
+  }
+} */
+
+@media screen and (max-width: 1150px) {
+  header nav > .menu1 {
+    display: none;
+  }
+
+  /* menu de 900px */
+
+  header nav > .menu2 {
+    display: flex;
+    list-style: none;
+  }
+
+  .User > a p {
+    font-size: 18px;
+    margin-left: 0.5rem;
+  }
+
+  .User > a img{
+    bottom: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .menu2 > li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+
+  .menu2 > li button {
+    padding: 12px;
+    margin-right: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    bottom: -0.8rem;
+  }
+
+  .menu2 > li button:active {
+    border: none;
+    border-radius: 100%;
+    background-color: #f73858;
+  }
+
+  .menu2 > li button:active i {
+    color: #fff;
+  }
+
+  .menu2 > li i {
+    font-size: 30px;
+  }
+
+  .submenu li {
+    text-align: justify;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .submenu > .opc {
+    white-space: 100%;
+    padding: 12px;
+    cursor: pointer;
+  }
+
+  /* opciones del menu desplegable*/
+  .submenu .opc:active {
+    background-color: #f73859;
+  }
+
+  .opc a {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .submenu {
+    height: 55rem;
+    background-color: #384259;
+    list-style: none;
+    display: block;
+    transition: all 0.8s;
+    position: absolute;
+    top: 5rem;
+    z-index: 2;
+  }
+
+  .active {
+    transform: translate(-600px);
+  }
+
+  /* estilos de buscador */
+  header nav > .menu2 form {
+    position: relative;
+    bottom: -1rem;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+  header nav > .menu2 form button {
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  header nav > .menu2 form i {
+    color: #333;
+    padding: 13px;
+    font-size: 1rem;
+  }
+
+  .menu2 form i:active {
+    color: #fff;
+    background-color: #f73859;
+  }
+
+  header nav > .menu2 form input {
+    padding: 12px;
+    border: none;
+    outline: none;
+  }
+}

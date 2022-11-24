@@ -1,0 +1,451 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,600;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,800;1,900&display=swap");
+
+.container {
+  display: flex;
+  margin: 1rem;
+  padding: 5rem;
+}
+
+.container > section:nth-child(1) {
+  margin: auto;
+  display: block;
+  margin-top: 3rem;
+}
+
+.perfil {
+  border: none;
+  background-color: #7ac7c4;
+  display: flex;
+  padding: 12px;
+  margin-bottom: 3rem;
+  border-radius: 8px;
+}
+.perfil > img {
+  width: 5rem;
+  border: none;
+  border-radius: 100%;
+  height: 5rem;
+}
+
+.datos {
+  text-align: justify;
+  margin-left: 0.8rem;
+  display: block;
+}
+
+.datos > p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.datos > h1 {
+  color: #fbfcfc;
+  font-family: "Nunito", sans-serif;
+}
+.Blogpost {
+  width: 36rem;
+  box-shadow: 8px 5px 8px rgba(0, 0, 0, 0.247);
+  background-color: #fbfcfc;
+  margin: 1rem;
+  margin-bottom: 2.5rem;
+  margin-top: 2.5rem;
+  border-radius: 8px;
+}
+
+.Blogpost > p {
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
+  padding: 12px;
+}
+
+.Blogpost > h3 {
+  font-family: "Nunito", sans-serif;
+  padding: 12px;
+}
+
+.imagen {
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 1rem;
+  min-width: 15rem;
+  width: 35rem;
+  height: 35rem;
+  min-height: 15rem;
+  object-fit: cover;
+  border: none;
+  border-radius: 3%;
+}
+/* comentarios*/
+.Comentairos {
+  margin: 1.5rem;
+  margin: 1.5rem;
+  padding: 18px;
+}
+
+.active{
+  display:none;
+}
+
+.comment {
+  background-color: #ecf0f1;
+  margin: 1.5rem;
+  box-shadow: 8px 5px 8px rgba(0, 0, 0, 0.247);
+}
+
+.user_comment {
+  display: flex;
+  padding: 5px;
+  border-radius: 5px;
+  width: 28rem;
+  margin: 1rem;
+}
+.user_comment > img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 100%;
+}
+
+.user_comment > div p:nth-child(1) {
+  position: relative;
+  top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 18px;
+  font-family: "Nunito", sans-serif;
+}
+
+.user_comment > div p:nth-child(2) {
+  position: relative;
+  top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.user_comment > div li {
+  display: flex;
+  padding: 5px;
+  margin: 0.5rem;
+}
+
+.user_comment > div li a {
+  font-family: "Nunito", sans-serif;
+  color: #333;
+  text-decoration: none;
+  margin-left: 0.8rem;
+}
+.user_comment > div li a:nth-child(1):hover {
+  color: #f73859;
+}
+.user_comment > div li a:nth-child(2):hover {
+  color: #0b3baa;
+}
+
+.text_comment {
+  margin-top: 0.5rem;
+  padding: 8px;
+}
+.text_comment > p {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn_comentarios {
+  padding: 18px;
+  width: 100%;
+}
+.btn_comentarios > label {
+  display: none;
+}
+
+.btn_comentarios > textarea {
+  overflow: auto;
+  resize: none;
+  height: 5rem;
+  padding: 8px;
+  width: 86%;
+  border: 1px solid black;
+  border-radius: 18px;
+  outline: none;
+  transform: all 0.8s;
+}
+.btn_comentarios > input:focus {
+  transform: all 0.8s;
+  border: none;
+  outline: 1px solid #7ac7c4;
+}
+
+.btn_comentarios > button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  position: relative;
+  bottom: 0.3rem;
+}
+
+/* pie de pagina */
+footer > nav {
+  background-color: #384259;
+  padding: 18px;
+  position: relative;
+  bottom: 0px;
+}
+
+.paginatior {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paginatior > a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
+/* perfiles o usurios registrados*/
+
+.container > section:nth-child(2) {
+  display: block;
+  margin-top: 5rem;
+  padding: 18px;
+  height: 25rem;
+  background-color: #fbfcfc;
+  box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.247);
+  border-radius: 15px;
+  overflow: auto;
+}
+
+.container > section:nth-child(2)::-webkit-scrollbar {
+  width: 7px;
+}
+
+.container > section:nth-child(2)::-webkit-scrollbar-thumb {
+  background-color: #7ac7c4;
+  border-radius: 15px;
+}
+.perfiles h2 {
+  font-family: "Nunito", sans-serif;
+  margin-left: 3rem;
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+.perfil hr {
+  margin-bottom: 3rem;
+}
+
+.perfiles > div a {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  margin: 1rem;
+  margin-bottom: 2rem;
+  padding: 8px;
+}
+.perfiles > div a:hover {
+  border-bottom: 1px solid #333;
+}
+
+.perfiles > div img {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 100%;
+}
+
+.perfiles > div h3 {
+  font-family: "Nunito", sans-serif;
+  margin-left: 1rem;
+  position: relative;
+  top: 1rem;
+  color: #333;
+}
+
+/* no se ha encontrado niguna publicasion*/
+.error {
+  position: relative;
+  bottom: 4rem;
+  padding: 18px;
+}
+.error > div {
+  margin: 1rem;
+  padding: 8px;
+}
+
+.error > div:nth-child(1) a {
+  border-radius: 15px;
+  color: #333;
+  font-family: "Nunito", sans-serif;
+  text-decoration: none;
+  padding: 15px;
+  margin: 1rem;
+  background-color: #f73859;
+}
+
+.error > div:nth-child(1) a:hover {
+  background-color: #7ac7c4;
+}
+.error > div:nth-child(1) a img {
+  position: relative;
+  top: 0.4rem;
+}
+
+.error > .img_errror {
+  width: 18rem;
+  position: relative;
+  left: 8rem;
+}
+
+.error h1 {
+  color: #333;
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+}
+
+/* perfiles en moviles*/
+.perfiles_mov {
+  display: none;
+}
+@media screen and (max-width: 1100px) {
+  .container > section:nth-child(2) {
+    display: none;
+  }
+  /* mostrar perfiles o usuarios registrados */
+  .perfiles_mov {
+    padding: 5px;
+    margin-top: 6rem;
+    display: block;
+    background-color: #fbfcfc;
+    box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.247);
+  }
+
+  .perfiles_mov h2 {
+    font-family: "Nunito", sans-serif;
+  }
+
+  .profiles {
+    margin: 0.5rem;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+  }
+  .profiles > div {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  .profiles > div a {
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .profiles div a h3 {
+    font-family: "Nunito", sans-serif;
+    color: #333;
+    font-size: 18px;
+    position: relative;
+    top: 0.6rem;
+    margin-left: 0.7rem;
+  }
+
+  .profiles > div a img {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 100%;
+  }
+
+  /*erro 404 no se encuentra una publicasion*/
+  .error {
+    bottom: 8rem;
+  }
+
+  .error h1 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  /*erro 404 no se encuentra una publicasion*/
+  .error {
+    top: -3rem;
+  }
+  .error > .img_errror {
+    left: 0rem;
+  }
+
+  .error h1 {
+    text-align: center;
+  }
+  /* mostrar  perfiles p usuarios registrados*/
+  .perfiles_mov {
+    padding: 5px;
+    margin-top: 6rem;
+    display: block;
+    background-color: #fbfcfc;
+    box-shadow: none;
+  }
+
+  .perfiles_mov h2 {
+    font-size: 18px;
+    font-family: "Nunito", sans-serif;
+  }
+
+  .profiles {
+    margin: 0.5rem;
+    width: 100%;
+    display: flex;
+    overflow: auto;
+  }
+  .profiles > div {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+  .profiles > div a {
+    display: flex;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .profiles div a h3 {
+    font-family: "Nunito", sans-serif;
+    color: #333;
+    font-size: 15px;
+    position: relative;
+    top: 0.6rem;
+    margin-left: 0.7rem;
+  }
+
+  .profiles > div a img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 100%;
+  }
+  /*contenido de la pagina web*/
+
+  .container > section:nth-child(2) {
+    display: none;
+  }
+
+  .container > section:nth-child(1) {
+    margin-top: -4rem;
+  }
+  .container {
+    justify-content: center;
+  }
+
+  .Blogpost {
+    width: 20rem;
+  }
+  .imagen {
+    width: 20rem;
+    height: 10rem;
+  }
+
+  .btn_comentarios > textarea {
+    width: 75%;
+    height: 2.5rem;
+  }
+}

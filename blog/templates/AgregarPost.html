@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'CSS/AgregarPost.css' %}">
+    <script defer src="{% static 'js/agregarPost.js' %}"></script>
+    <title>Agregar nuevo Post</title>
+  <body>
+    <header>
+      <nav>
+        <a href="/" title="Volve Al menu Principal"><img src="{% static 'img/atras.png' %}" alt="atras"></a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div>{{ form.as_p }}</div>
+          <div class="img"></div>
+
+          <div class="alert">
+            <p class="error"></p>
+          </div>
+          
+          <div class="btn">
+            <button class="btn_img" type="button"><img src="{% static 'img/imagen.png' %}" alt="Imagen" /></button>
+            <button type="submit">Publicar</button>
+        </div>
+    
+        </form> 
+      </section>
+    </main>
+  
+  </body>
+</html>
