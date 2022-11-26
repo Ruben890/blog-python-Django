@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class profile(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name='perfil')
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='perfil', unique=True)
     image = models.ImageField(default='buo.jpg',)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class profile(models.Model):
 
 class PostBLog(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name='Posts')
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='Posts',unique=True)
     title = models.CharField('Title', max_length=50, null=False, blank=False)
     descriction = models.TextField('Descripsion', null=False, blank=False)
     img = models.ImageField('Imagen',
