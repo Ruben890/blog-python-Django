@@ -17,7 +17,7 @@ class profile(models.Model):
 
 class PostBLog(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name='Posts',unique=True)
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='Posts')
     title = models.CharField('Title', max_length=50, null=False, blank=False)
     descriction = models.TextField('Descripsion', null=False, blank=False)
     img = models.ImageField('Imagen',
@@ -38,7 +38,7 @@ class PostBLog(models.Model):
 
 class Cometarios(models.Model):
     comentario = models.TextField(null=False, blank=False)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Comentario', unique=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='Comentario')
     post = models.ForeignKey('PostBLog', on_delete=models.CASCADE)
     data = models.DateTimeField(default=timezone.now)
 
