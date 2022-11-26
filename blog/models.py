@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class profile(models.Model):
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True, related_name='perfil', unique=True)
+        User, on_delete=models.CASCADE, null=True, blank=True, related_name='perfil')
     image = models.ImageField(default='buo.jpg',)
 
     def __str__(self):
