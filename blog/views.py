@@ -243,3 +243,8 @@ class Register(FormView):
         if user is not None:
             login(self.request, user)
         return super(Register, self).form_valid(form)
+    
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+           return redirect('homepage')
+        return super(Register, self).get(*args, **kwargs)
